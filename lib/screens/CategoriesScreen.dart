@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:meal_app/1.1%20dummy_data.dart';
 import 'package:meal_app/widgets/CategoriesItem.dart';
 
-class CategoresScreen extends StatelessWidget {
+class CategoriesScreen extends StatelessWidget {
+  static String routeName = "/categories";
+
 
   @override
   Widget build(BuildContext context) {

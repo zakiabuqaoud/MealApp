@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/screens/CategoriesScreen.dart';
+import 'package:meal_app/screens/MealScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,9 +25,12 @@ class MyApp extends StatelessWidget {
               fontFamily: "RobotoCondensed"
           )
         ),
-
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        CategoriesScreen.routeName : (context) => CategoriesScreen(),
+        MealScreen.routeName: (context) => MealScreen(),
+      },
     );
   }
 }
@@ -45,6 +49,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return CategoresScreen();
+    return CategoriesScreen();
   }
 }

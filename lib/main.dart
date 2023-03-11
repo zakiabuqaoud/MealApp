@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meal_app/screens/CategoriesScreen.dart';
 import 'package:meal_app/screens/MealScreen.dart';
 import 'package:meal_app/screens/MealDetails.dart';
+import 'package:meal_app/screens/TabsScreen.dart';
 
 
 void main() {
@@ -28,8 +29,8 @@ class MyApp extends StatelessWidget {
           )
         ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
       routes: {
+        "/":(context) => TabsScreen(),
         CategoriesScreen.routeName : (context) => CategoriesScreen(),
         MealScreen.routeName: (context) => MealScreen(),
         MealDetails.routeName: (context) => MealDetails()
@@ -38,20 +39,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
 
 
-  @override
-  Widget build(BuildContext context) {
-    return CategoriesScreen();
-  }
-}
+

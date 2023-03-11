@@ -25,7 +25,7 @@ class _MealScreenState extends State<MealScreen> {
       appBar: AppBar(title: Text(categoryTitle)),
       body: ListView.builder(
         itemBuilder: (BuildContext context, int index) {
-          return MealItemInMealsScreen(title: meals[index].title, imageUrl: meals[index].imageUrl, duration: meals[index].duration, complexity:meals[index].complexity, affordability: meals[index].affordability);
+          return MealItemInMealsScreen(id: meals[index].id,title: meals[index].title, imageUrl: meals[index].imageUrl, duration: meals[index].duration, complexity:meals[index].complexity, affordability: meals[index].affordability);
         },
         itemCount: meals.length,
 

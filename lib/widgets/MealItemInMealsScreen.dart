@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import '../screens/MealDetails.dart';
 
 class MealItemInMealsScreen extends StatelessWidget {
+  final String id;
   final complexity;
   final imageUrl;
   final title;
@@ -8,7 +10,8 @@ class MealItemInMealsScreen extends StatelessWidget {
   final affordability;
 
   const MealItemInMealsScreen(
-      {required this.complexity,
+      {required this.id,
+      required this.complexity,
       required this.imageUrl,
       required this.title,
       required this.duration,
@@ -46,7 +49,10 @@ class MealItemInMealsScreen extends StatelessWidget {
     }
   }
 
-  void selectMeal(BuildContext context) {}
+  void selectMeal(BuildContext context) {
+    Navigator.of(context)
+        .pushNamed(MealDetails.routeName, arguments: id);
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/screens/CategoriesScreen.dart';
+import 'package:meal_app/screens/FilterScreen.dart';
 import 'package:meal_app/screens/MealScreen.dart';
 import 'package:meal_app/screens/MealDetails.dart';
 import 'package:meal_app/screens/TabsScreen.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner:false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        fontFamily: "Raleway",
         primarySwatch: Colors.pink,
         accentColor: Colors.amber,
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
@@ -33,7 +35,9 @@ class MyApp extends StatelessWidget {
         "/":(context) => TabsScreen(),
         CategoriesScreen.routeName : (context) => CategoriesScreen(),
         MealScreen.routeName: (context) => MealScreen(),
-        MealDetails.routeName: (context) => MealDetails()
+        MealDetails.routeName: (context) => MealDetails(),
+        FilterScreen.routeName:(context) => FilterScreen()
+
       },
     );
   }

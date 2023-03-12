@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/screens/CategoriesScreen.dart';
 import 'package:meal_app/screens/FavoritesScreen.dart';
+import 'package:meal_app/widgets/MainDrawer.dart';
 
 class TabsScreen extends StatefulWidget {
 
@@ -48,6 +49,8 @@ class _TabsScreenState extends State<TabsScreen> {
             )
           ],
         ),
+        drawer: MainDrawer(),
+        drawerScrimColor: Theme.of(context).primaryColor.withOpacity(0.8),
       ),
     );
   }

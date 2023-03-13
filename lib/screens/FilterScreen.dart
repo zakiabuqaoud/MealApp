@@ -4,19 +4,33 @@ import '../widgets/MainDrawer.dart';
 
 class FilterScreen extends StatefulWidget {
   static String routeName = "/filter";
+  final Function saveFilter;
+  final Map<String,bool> filters;
+  FilterScreen(this.saveFilter, this.filters);
 
   @override
   State<FilterScreen> createState() => _FilterScreenState();
 }
 
 class _FilterScreenState extends State<FilterScreen> {
-  bool _glutenFree = false;
-  bool _lactoseFree = false;
-  bool _vegan = false;
-  bool _vegatarian = false;
+  late bool _glutenFree = false;
+  late bool _lactoseFree = false;
+  late bool _vegan = false;
+  late bool _vegetarian= false;
 
-  Widget createSwitchListTile(
-      bool filter, String title, String subTitle, int num) {
+  @override
+  void initState() {
+    // TODO: implement initState
+     _glutenFree = widget.filters["gluten"]!;
+     _lactoseFree = widget.filters["lactose"]!;
+     _vegan = widget.filters["vegan"]!;
+     _vegetarian = widget.filters["vegetarian"]!;
+    super.initState();
+  }
+
+
+
+  Widget createSwitchListTile(bool filter, String title, String subTitle, int num) {
     return SwitchListTile(
       title: Text(title),
       subtitle: Text(subTitle),
@@ -30,7 +44,7 @@ class _FilterScreenState extends State<FilterScreen> {
           } else if (num == 3) {
             _vegan = newValue;
           } else if (num == 4) {
-            _vegatarian = newValue;
+            _vegetarian = newValue;
           }
         });
       },
@@ -42,6 +56,20 @@ class _FilterScreenState extends State<FilterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Your Filter"),
+        actions: [
+          IconButton(onPressed: (){
+              final selectedFilter = {
+                "gluten":_glutenFree,
+                "lactose":_lactoseFree,
+                "vegan":_vegan,
+                "vegetarian":_vegetarian,
+              };
+              widget.saveFilter(selectedFilter);
+
+
+
+            }, icon: Icon(Icons.save))
+        ],
       ),
       body: Column(
         children: [
@@ -60,9 +88,9 @@ class _FilterScreenState extends State<FilterScreen> {
               createSwitchListTile(_lactoseFree, "Lactose-Free",
                   "Only include lactose-free meals", 2),
               createSwitchListTile(
-                  _vegan, "Vegan-Free", "Only include vegan-free meals", 3),
-              createSwitchListTile(_vegatarian, "Vegatarian-Free",
-                  "Only include vegatarian-free meals", 4),
+                  _vegan, "Vegan", "Only include vegan meals", 3),
+              createSwitchListTile(_vegetarian, "Vegetarian",
+                  "Only include vegatarian meals", 4),
             ],
           ))
         ],

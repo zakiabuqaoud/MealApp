@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
-import 'package:meal_app/1.1%20dummy_data.dart';
-import 'package:meal_app/widgets/CategoriesItem.dart';
+import '../1.1%20dummy_data.dart';
+import '../widgets/CategoriesItem.dart';
 
 //Home Page Group of Category
 class CategoriesScreen extends StatelessWidget {

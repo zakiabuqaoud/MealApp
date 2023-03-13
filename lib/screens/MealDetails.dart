@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/models/Meal.dart';
-import 'package:meal_app/1.1 dummy_data.dart';
+import '../models/Meal.dart';
+import '../1.1 dummy_data.dart';
 
 class MealDetails extends StatelessWidget {
   static String routeName = "/meal_details";

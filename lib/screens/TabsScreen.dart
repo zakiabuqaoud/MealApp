@@ -1,19 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:meal_app/models/Meal.dart';
 import '../screens/CategoriesScreen.dart';
 import '../screens/FavoritesScreen.dart';
 import '../widgets/MainDrawer.dart';
 
 class TabsScreen extends StatefulWidget {
+  final List<Meal> FavoriteMeal;
+
+  const TabsScreen(this.FavoriteMeal);
 
   @override
   State<TabsScreen> createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  final List<Map<String, Object>> pages = [
-    {"page": CategoriesScreen(), "title": "Category"},
-    {"page": const FavoritesScreen(), "title": "Your Favorites"}
-  ];
+  late List<Map<String, Object>> pages;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    pages = [
+      {"page": CategoriesScreen(), "title": "Category"},
+      {"page": FavoritesScreen(widget.FavoriteMeal), "title": "Your Favorites"}
+    ];
+    super.initState();
+  }
+
   int selectTabIndex = 0;
 
   void selectTab(int value) {
@@ -21,6 +33,7 @@ class _TabsScreenState extends State<TabsScreen> {
       selectTabIndex = value;
     });
   }
+
 //
   @override
   Widget build(BuildContext context) {
@@ -32,7 +45,6 @@ class _TabsScreenState extends State<TabsScreen> {
         ),
         body: pages[selectTabIndex]["page"] as Widget,
         bottomNavigationBar: BottomNavigationBar(
-
           backgroundColor: Theme.of(context).primaryColor,
           selectedItemColor: Theme.of(context).accentColor,
           unselectedItemColor: Colors.white,
@@ -40,13 +52,8 @@ class _TabsScreenState extends State<TabsScreen> {
           onTap: selectTab,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.category),
-              label: "category"
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.star),
-              label: "Favorites"
-            )
+                icon: Icon(Icons.category), label: "category"),
+            BottomNavigationBarItem(icon: Icon(Icons.star), label: "Favorites")
           ],
         ),
         drawer: MainDrawer(),
